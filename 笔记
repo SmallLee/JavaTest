@@ -1,0 +1,36 @@
+1.查看java字节码的命令
+javap -verbose
+2.类的加载机制
+    I.加载(loadClass--findClass--根据名称文件存入字节数组--defineClass--返回class对象)
+    II.连接(验证-准备-解析)
+        验证：
+    III:初始化
+ 3.类加载器
+    BootStrapClassLoader(加载jre/lib/rt.jar)
+    ExtClassloader(加载jre/lib/ext/*.jar)
+    AppClassloader(加载classpath下的jar)
+
+  4.jdk安装完为什么会有两个JRE?
+    是为了分担工作，开发时执行的是jdk中的jre，
+    运行java程序时执行的是外部的jre
+    这两个jre的区别：jdk中的jre多了一个server vm,server vm启动时间较长，占用内存多
+    ，但是启动后执行性能更高，适合开发
+
+  5.为什么要双亲委派机制
+    防止类加载混乱，引起异常
+
+  6. this.getClass().getResourceAsStream();
+    路径以/开头。是从classpath下加载，不以/开头是从类所在的包下加载
+
+     this.getClass().getClassLoader().getResourceAsStream()
+     默认是从classpath下加载文件，路径不能以/开头
+
+   7.java中路径写法
+        斜杠和反斜杠都可以用，下面两个效果相同
+        file1 = new FileReader(new File("C:/Users/Administrator/Desktop/55.txt"));
+        file1 = new FileReader(new File("C:\\Users\\Administrator\\Desktop\\55.txt"));
+        java中的路径一般用/
+        windows中为\
+        linux中为/
+
+
